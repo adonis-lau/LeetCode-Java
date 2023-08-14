@@ -47,8 +47,7 @@ class Remove_Linked_List_Elements {
     }
 
     public static ListNode removeElements(ListNode head, int val) {
-        ListNode dummy = new ListNode();
-        dummy.next = head;
+        ListNode dummy = new ListNode(-1, head);
         ListNode prev = dummy;
         while (head != null) {
             if (head.val == val) {
@@ -59,50 +58,5 @@ class Remove_Linked_List_Elements {
             head = head.next;
         }
         return dummy.next;
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-
-    public static ListNode genListNode(int[] values) {
-        ListNode startNode = null;
-        ListNode indexNode = null;
-        for (int value : values) {
-            ListNode curr = new ListNode(value);
-            if (startNode == null) {
-                startNode = curr;
-                indexNode = curr;
-            }
-            indexNode.next = curr;
-            indexNode = curr;
-        }
-
-        if (indexNode != null) {
-            indexNode.next = null;
-        }
-        return startNode;
-    }
-
-    public static void printListNode(ListNode listNode) {
-        List<Integer> list = new ArrayList<>();
-        while (listNode != null) {
-            list.add(listNode.val);
-            listNode = listNode.next;
-        }
-        System.out.println(JSON.toJSONString(list));
     }
 }
